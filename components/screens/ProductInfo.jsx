@@ -17,7 +17,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ProductInfo = ({route, navigation}) => {
-  const {productID} = route.params;
+  const {productID , name} = route.params;
 
   const [product, setProduct] = useState({});
 
@@ -48,7 +48,7 @@ const ProductInfo = ({route, navigation}) => {
 
   //add to cart
 
-  const addToCart = async id => {
+  const addToCart = async (id , name) => {
     let itemArray = await AsyncStorage.getItem('cartItems');
     itemArray = JSON.parse(itemArray);
     if (itemArray) {
@@ -61,7 +61,7 @@ const ProductInfo = ({route, navigation}) => {
           'Item Added Successfully to cart',
           ToastAndroid.SHORT,
         );
-        navigation.navigate('Bottom Navigation');
+        navigation.navigate('Store', {name});
       } catch (error) {
         return error;
       }
@@ -74,7 +74,7 @@ const ProductInfo = ({route, navigation}) => {
           'Item Added Successfully to cart',
           ToastAndroid.SHORT,
         );
-        navigation.navigate('Bottom Navigation');
+        navigation.navigate('Store', {name});
       } catch (error) {
         return error;
       }
@@ -92,7 +92,7 @@ const ProductInfo = ({route, navigation}) => {
           justifyContent: 'center',
         }}>
         <Image
-          source={item}
+          source={{ uri : item}}
           style={{
             width: '100%',
             height: '100%',
@@ -339,7 +339,7 @@ const ProductInfo = ({route, navigation}) => {
           alignItems: 'center',
         }}>
         <TouchableOpacity
-          onPress={() => (product.isAvailable ? addToCart(product.id) : null)}
+          onPress={() => (product.isAvailable ? addToCart(product.id , name) : null)}
           style={{
             width: '86%',
             height: '90%',

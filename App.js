@@ -8,6 +8,8 @@ import BottomTabNavigation from "./navigation/BottomTabNavigation";
 import Home from "./components/screens/Home";
 import MyCart from './components/screens/MyCart';
 import ProductInfo from './components/screens/ProductInfo';
+import Store from "./components/screens/Store";
+import Login from "./components/screens/Login";
 import { db } from "./firebase.config";
 
 const Stack = createNativeStackNavigator();
@@ -33,12 +35,15 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      {/* <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
+   */}
         <Stack.Screen
           name="Bottom Navigation"
           component={BottomTabNavigation}
           options={{ headerShown: false }}
         />
          <Stack.Screen name="Home" component={React.memo(Home)} options={{ headerShown: false }} />
+         <Stack.Screen name="Store" component={Store} options={{ headerShown: false }}/>
         <Stack.Screen name="MyCart" component={MyCart} options={{ headerShown: false }}/>
         <Stack.Screen name="ProductInfo" component={ProductInfo} options={{ headerShown: false }}/>
       </Stack.Navigator>

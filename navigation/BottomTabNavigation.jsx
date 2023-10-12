@@ -5,6 +5,8 @@ import { Ionicons, AntDesign, Feather } from "@expo/vector-icons";
 import { COLORS } from "../constants/index";
 import { Entypo } from '@expo/vector-icons';
 import Home from "../components/screens/Home"
+import Store from "../components/screens/Store";
+import Sellers from "../components/screens/Sellers";
 
 
 const Tab = createBottomTabNavigator();
@@ -28,7 +30,7 @@ const BottomTabNavigation = () => {
     <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={React.memo(Home)}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -42,8 +44,8 @@ const BottomTabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Search"
-        component={React.memo(Home)}
+        name="Sellers"
+        component={React.memo(Sellers)}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -57,23 +59,7 @@ const BottomTabNavigation = () => {
         }}
       />
 
-      <Tab.Screen
-        name="scan"
-        component={React.memo(Home)}
-        options={{
-          tabBarIcon: ({ focused }) => {
-            return (
-              <View style={{ backgroundColor: focused ? COLORS.primary : "#198155", padding: 18 , borderRadius: 50 }}>
-              <Entypo
-                name="camera"
-                size={24}
-                color="white"
-              />
-              </View>
-            );
-          },
-        }}
-      />
+
       <Tab.Screen
         name="fav"
         component={Home}
