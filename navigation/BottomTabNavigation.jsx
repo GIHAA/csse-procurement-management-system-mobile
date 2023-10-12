@@ -2,11 +2,11 @@ import React from "react";
 import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons, AntDesign, Feather } from "@expo/vector-icons";
-import { COLORS } from "../constants/index";
+import { COLOURS } from "../constants/index";
 import { Entypo } from '@expo/vector-icons';
-import Home from "../components/screens/Home"
-import Store from "../components/screens/Store";
-import Sellers from "../components/screens/Sellers";
+import Home from "../screens/Home"
+import Store from "../screens/Store";
+import Sellers from "../screens/Sellers";
 
 
 const Tab = createBottomTabNavigator();
@@ -37,7 +37,7 @@ const BottomTabNavigation = () => {
               <Ionicons
                 name={focused ? "home" : "home-outline"}
                 size={24}
-                color={focused ? COLORS.primary : COLORS.gray2}
+                color={focused ? COLOURS.primary : COLOURS.gray2}
               />
             );
           },
@@ -52,7 +52,7 @@ const BottomTabNavigation = () => {
               <Ionicons
                 name={"search-sharp"}
                 size={24}
-                color={focused ? COLORS.primary : COLORS.gray2}
+                color={focused ? COLOURS.primary : COLOURS.gray2}
               />
             );
           },
@@ -70,7 +70,7 @@ const BottomTabNavigation = () => {
               <Feather
                 name={"heart"}
                 size={24}
-                color={focused ? COLORS.primary : COLORS.gray2}
+                color={focused ? COLOURS.primary : COLOURS.gray2}
               />
             );
           },
@@ -86,7 +86,7 @@ const BottomTabNavigation = () => {
               <Ionicons
                 name={focused ? "person" : "person-outline"}
                 size={24}
-                color={focused ? COLORS.primary : COLORS.gray2}
+                color={focused ? COLOURS.primary : COLOURS.gray2}
               />
             );
           },

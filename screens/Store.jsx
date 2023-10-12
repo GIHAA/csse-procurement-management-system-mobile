@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import { COLOURS, Items } from "../database/Database";
+import {  Items } from "../assets/database/Database";
 import Entypo from "react-native-vector-icons/Entypo";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -172,7 +172,7 @@ const Store = ({ route, navigation  }) => {
             </View>
           )
         ) : null}
-        <Text>&#8377; {data.productPrice}</Text>
+        <Text>Rs :  {data.productPrice}</Text>
       </TouchableOpacity>
     );
   };

@@ -9,8 +9,9 @@ import {
   Alert,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {COLOURS, Items} from '../database/Database';
+import {COLOURS, Items} from '../assets/database/Database';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MyCartItems from './MyCartItems';
 
 const MyCart = ({navigation}) => {
   const [product, setProduct] = useState();
@@ -24,7 +25,6 @@ const MyCart = ({navigation}) => {
     return unsubscribe;
   }, [navigation]);
 
-  //get data from local DB by ID
   const getDataFromDB = async () => {
     let items = await AsyncStorage.getItem('cartItems');
     items = JSON.parse(items);
@@ -32,7 +32,8 @@ const MyCart = ({navigation}) => {
     if (items) {
       Items.forEach(data => {
         if (items.includes(data.id)) {
-          productData.push(data);
+          const newData = {...data , quantity : 1};
+          productData.push(newData);
           return;
         }
       });
@@ -79,6 +80,8 @@ const MyCart = ({navigation}) => {
 
       //const data = await AsyncStorage.getItem('cartItems')
       Alert.alert(JSON.stringify(product));
+
+      console.log(product)
       //await AsyncStorage.removeItem('cartItems');
     } catch (error) {
       return error;
@@ -89,139 +92,19 @@ const MyCart = ({navigation}) => {
     navigation.navigate('Home');
   };
 
+  const updateQuantity = (itemId, newQuantity) => {
+    const updatedCartItems = product.map((item) => {
+      if (item.id === itemId) {
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
+    setProduct(updatedCartItems);
+  };
+
   const renderProducts = (data, index) => {
     return (
-      <TouchableOpacity
-        key={data.key}
-        // onPress={() => navigation.navigate('ProductInfo', {productID: data.id})}
-        style={{
-          width: '100%',
-          height: 100,
-          marginVertical: 6,
-          flexDirection: 'row',
-          alignItems: 'center',
-        }}>
-        <View
-          style={{
-            width: '30%',
-            height: 100,
-            padding: 14,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: COLOURS.backgroundLight,
-            borderRadius: 10,
-            marginRight: 22,
-          }}>
-          <Image
-            source={data.productImage}
-            style={{
-              width: '100%',
-              height: '100%',
-              resizeMode: 'contain',
-            }}
-          />
-        </View>
-        <View
-          style={{
-            flex: 1,
-            height: '100%',
-            justifyContent: 'space-around',
-          }}>
-          <View style={{}}>
-            <Text
-              style={{
-                fontSize: 14,
-                maxWidth: '100%',
-                color: COLOURS.black,
-                fontWeight: '600',
-                letterSpacing: 1,
-              }}>
-              {data.productName}
-            </Text>
-            <View
-              style={{
-                marginTop: 4,
-                flexDirection: 'row',
-                alignItems: 'center',
-                opacity: 0.6,
-              }}>
-              <Text
-                style={{
-                  fontSize: 14,
-                  fontWeight: '400',
-                  maxWidth: '85%',
-                  marginRight: 4,
-                }}>
-                &#8377;{data.productPrice}
-              </Text>
-              <Text>
-                (~&#8377;
-                {data.productPrice + data.productPrice / 20})
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}>
-              <View
-                style={{
-                  borderRadius: 100,
-                  marginRight: 20,
-                  padding: 4,
-                  borderWidth: 1,
-                  borderColor: COLOURS.backgroundMedium,
-                  opacity: 0.5,
-                }}>
-                <MaterialCommunityIcons
-                  name="minus"
-                  style={{
-                    fontSize: 16,
-                    color: COLOURS.backgroundDark,
-                  }}
-                />
-              </View>
-              <Text>1</Text>
-              <View
-                style={{
-                  borderRadius: 100,
-                  marginLeft: 20,
-                  padding: 4,
-                  borderWidth: 1,
-                  borderColor: COLOURS.backgroundMedium,
-                  opacity: 0.5,
-                }}>
-                <MaterialCommunityIcons
-                  name="plus"
-                  style={{
-                    fontSize: 16,
-                    color: COLOURS.backgroundDark,
-                  }}
-                />
-              </View>
-            </View>
-            <TouchableOpacity onPress={() => removeItemFromCart(data.id)}>
-              <MaterialCommunityIcons
-                name="delete-outline"
-                style={{
-                  fontSize: 16,
-                  color: COLOURS.backgroundDark,
-                  backgroundColor: COLOURS.backgroundLight,
-                  padding: 8,
-                  borderRadius: 100,
-                }}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
-      </TouchableOpacity>
+     <MyCartItems removeItemFromCart={removeItemFromCart} updateQuantity={updateQuantity} data={data} />
     );
   };
 
@@ -467,7 +350,7 @@ const MyCart = ({navigation}) => {
                   color: COLOURS.black,
                   opacity: 0.8,
                 }}>
-                &#8377;{total}.00
+                Rs : {total}.00
               </Text>
             </View>
             <View
@@ -494,7 +377,7 @@ const MyCart = ({navigation}) => {
                   color: COLOURS.black,
                   opacity: 0.8,
                 }}>
-                &#8377;{total / 20}
+                Rs : {total / 20}
               </Text>
             </View>
             <View
@@ -519,7 +402,7 @@ const MyCart = ({navigation}) => {
                   fontWeight: '500',
                   color: COLOURS.black,
                 }}>
-                &#8377;{total + total / 20}
+                Rs : {total + total / 20}
               </Text>
             </View>
           </View>
@@ -553,7 +436,7 @@ const MyCart = ({navigation}) => {
               color: COLOURS.white,
               textTransform: 'uppercase',
             }}>
-            CHECKOUT (&#8377;{total + total / 20} )
+            CHECKOUT (Rs : {total + total / 20} )
           </Text>
         </TouchableOpacity>
       </View>

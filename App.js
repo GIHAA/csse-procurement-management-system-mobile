@@ -5,12 +5,11 @@ import { useCallback } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTabNavigation from "./navigation/BottomTabNavigation";
-import Home from "./components/screens/Home";
-import MyCart from './components/screens/MyCart';
-import ProductInfo from './components/screens/ProductInfo';
-import Store from "./components/screens/Store";
-import Login from "./components/screens/Login";
-import { db } from "./firebase.config";
+import Home from "./screens/Home";
+import MyCart from './screens/MyCart';
+import ProductInfo from './screens/ProductInfo';
+import Store from "./screens/Store";
+
 
 const Stack = createNativeStackNavigator();
 

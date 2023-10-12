@@ -5,17 +5,15 @@ import {
   StatusBar,
   ScrollView,
   TouchableOpacity,
-  TextInput,
 } from "react-native";
-import { COLOURS, Items } from "../database/Database";
+import { Items } from "../assets/database/Database";
 import Entypo from "react-native-vector-icons/Entypo";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import { getAuth } from "firebase/auth";
-import { COLORS, SIZES } from "../../constants";
-import { Feather } from "@expo/vector-icons";
 
-const Sellers = ({ navigation }) => {
+import { COLOURS } from "../constants";
+
+const Home = ({ navigation }) => {
   const [products, setProducts] = useState([]);
   const [accessory, setAccessory] = useState([]);
   const [user, setUser] = useState();
@@ -26,8 +24,8 @@ const Sellers = ({ navigation }) => {
       getDataFromDB();
     });
 
-    const auth = getAuth();
-    const user = auth.currentUser;
+    // const auth = getAuth();
+    // const user = auth.currentUser;
     setUser(user);
 
     return unsubscribe;
@@ -82,6 +80,19 @@ const Sellers = ({ navigation }) => {
               }}
             />
           </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("MyCart")}>
+            <MaterialCommunityIcons
+              name="cart"
+              style={{
+                fontSize: 18,
+                color: COLOURS.backgroundMedium,
+                padding: 12,
+                borderRadius: 10,
+                borderWidth: 1,
+                borderColor: COLOURS.backgroundLight,
+              }}
+            />
+          </TouchableOpacity>
         </View>
         <View
           style={{
@@ -98,58 +109,20 @@ const Sellers = ({ navigation }) => {
               marginBottom: 10,
             }}
           >
-            Available Sellers
+            Good morning user
           </Text>
-        </View>
-
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            alignContent: "center",
-            marginHorizontal: SIZES.small,
-            backgroundColor: COLORS.secondary,
-            borderRadius: SIZES.medium,
-            marginVertical: SIZES.medium,
-            height: 50,
-          }}
-        >
-          <View
+          <Text
             style={{
-              flex: 1,
-              backgroundColor: COLORS.secondary,
-              marginRight: SIZES.small,
-              borderRadius: SIZES.small,
+              fontSize: 14,
+              color: COLOURS.black,
+              fontWeight: "400",
+              letterSpacing: 1,
+              lineHeight: 24,
             }}
           >
-            <TextInput
-              style={{
-                fontFamily: "regular",
-                width: "100%",
-                height: "100%",
-                paddingHorizontal: SIZES.small,
-              }}
-              value=""
-              placeholder="Search for sellers"
-            />
-          </View>
-
-          <View>
-            <TouchableOpacity
-              style={{
-                width: 50,
-                height: "100%",
-                borderRadius: SIZES.medium,
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: COLORS.primary,
-              }}
-            >
-              <Feather name="search" size={24} color={COLORS.offwhite} />
-            </TouchableOpacity>
-          </View>
+            Hardware shop on battuwatta
+          </Text>
         </View>
-
         <View
           style={{
             padding: 16,
@@ -166,16 +139,22 @@ const Sellers = ({ navigation }) => {
               style={{
                 flexDirection: "row",
                 alignItems: "center",
-                borderBottomColor: "gray",
-                borderWidth: 1,
-                width: "100%",
-                opacity: 0.3,
               }}
-            ></View>
+            >
+              <Text
+                style={{
+                  fontSize: 18,
+                  color: COLOURS.black,
+                  fontWeight: "500",
+                  letterSpacing: 1,
+                }}
+              >
+                Recent activity
+              </Text>
+            </View>
           </View>
 
           <ScrollView style={{ flex: 1 }}>
-            
             <View
               style={{
                 flexDirection: "row",
@@ -183,20 +162,17 @@ const Sellers = ({ navigation }) => {
                 justifyContent: "space-around",
               }}
             >
-              <TouchableOpacity
-                onPress={()=>{
-                    navigation.navigate("Store" , { name : "Gihan"})
-                }}
+              <View
                 style={{
                   height: 110,
                   marginTop: 20,
-                  backgroundColor: COLORS.secondary,
+                  backgroundColor: COLOURS.secondary,
                   marginHorizontal: 13,
                   borderRadius: 10,
                   justifyContent: "space-between",
                   padding: 10,
                   borderWidth: 1,
-                  borderColor: COLORS.primary,
+                  borderColor: COLOURS.primary,
                   width: "100%",
                 }}
               >
@@ -209,54 +185,20 @@ const Sellers = ({ navigation }) => {
                 >
                   <View style={{ flexDirection: "column" }}>
                     <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                      Namal Solutions
+                      Order Placed
                     </Text>
                     <Text style={{ fontSize: 15 }}>
-                      Category : Tools and Equipment
+                      Field Officer : Gihan Sudeepa
                     </Text>
                     <Text style={{ fontSize: 15 }}>
-                      Address : 668/5 narangodapaluwa battuwatta
+                      Seller : Namal Solutions
+                    </Text>
+                    <Text style={{ fontSize: 15 }}>
+                      Total Price : 30000 lkr
                     </Text>
                   </View>
                 </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={{
-                  height: 110,
-                  marginTop: 20,
-                  backgroundColor: COLORS.secondary,
-                  marginHorizontal: 13,
-                  borderRadius: 10,
-                  justifyContent: "space-between",
-                  padding: 10,
-                  borderWidth: 1,
-                  borderColor: COLORS.primary,
-                  width: "100%",
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <View style={{ flexDirection: "column" }}>
-                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                      Namal Solutions
-                    </Text>
-                    <Text style={{ fontSize: 15 }}>
-                      Category : Tools and Equipment
-                    </Text>
-                    <Text style={{ fontSize: 15 }}>
-                      Address : 668/5 narangodapaluwa battuwatta
-                    </Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-
-
+              </View>
             </View>
           </ScrollView>
         </View>
@@ -265,4 +207,4 @@ const Sellers = ({ navigation }) => {
   );
 };
 
-export default Sellers;
+export default Home;
