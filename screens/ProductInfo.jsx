@@ -11,7 +11,7 @@ import {
   Animated,
   ToastAndroid,
 } from 'react-native';
-import {COLOURS, Items} from '../database/Database';
+import {COLOURS, Items} from '../assets/database/Database';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -319,10 +319,10 @@ const ProductInfo = ({route, navigation}) => {
                 color: COLOURS.black,
                 marginBottom: 4,
               }}>
-              &#8377; {product.productPrice}.00
+              Rs :  {product.productPrice}.00
             </Text>
             <Text>
-              Tax Rate 2%~ &#8377;{product.productPrice / 20} (&#8377;
+              Tax Rate 2%~ Rs : {product.productPrice / 20} (Rs : 
               {product.productPrice + product.productPrice / 20})
             </Text>
           </View>
