@@ -1,5 +1,7 @@
 
 import { Dimensions } from 'react-native'
+import { DefaultTheme } from 'react-native-paper'
+
 const { height, width } = Dimensions.get('window');
 
 const COLOURS = {
@@ -61,5 +63,16 @@ const SHADOWS = {
   },
 };
 
+const THEME = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    text: '#000000',
+    primary: '#453B70',
+    secondary: '#414757',
+    error: '#f13a59',
+  },
+}
 
-export { COLOURS, SIZES , SHADOWS };
+
+export { COLOURS, SIZES , SHADOWS , THEME };

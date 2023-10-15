@@ -81,7 +81,7 @@ export const Items = [
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/scrapie-85d87.appspot.com/o/temp%2Fistockphoto-476199756-1024x1024-transformed.webp?alt=media&token=43468e0d-d114-453b-9622-55260ba7ef68",
     isAvailable: false,
-    productImageList: ["", "", ""],
+    productImageList: [      "https://firebasestorage.googleapis.com/v0/b/scrapie-85d87.appspot.com/o/temp%2Fistockphoto-476199756-1024x1024-transformed.webp?alt=media&token=43468e0d-d114-453b-9622-55260ba7ef68", "", ""],
   },
   {
     id: 6,
@@ -94,6 +94,6 @@ export const Items = [
     productImage:
       "https://firebasestorage.googleapis.com/v0/b/scrapie-85d87.appspot.com/o/temp%2Fistockphoto-476199756-1024x1024-transformed.webp?alt=media&token=43468e0d-d114-453b-9622-55260ba7ef68",
     isAvailable: true,
-    productImageList: ["", "", ""],
+    productImageList: [      "https://firebasestorage.googleapis.com/v0/b/scrapie-85d87.appspot.com/o/temp%2Fistockphoto-476199756-1024x1024-transformed.webp?alt=media&token=43468e0d-d114-453b-9622-55260ba7ef68", "", ""],
   },
 ];

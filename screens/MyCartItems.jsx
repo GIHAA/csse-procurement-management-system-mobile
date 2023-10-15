@@ -40,7 +40,7 @@ const MyCartItems = (props) => {
             >
               <MaterialCommunityIcons name="minus" style={styles.quantityIcon} />
             </TouchableOpacity>
-            <Text>{quantity-1}</Text>
+            <Text>{quantity}</Text>
             <TouchableOpacity
               onPress={() => {
                 setQuantity(quantity + 1);

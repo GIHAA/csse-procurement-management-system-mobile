@@ -9,30 +9,32 @@ import {
 import { Items } from "../assets/database/Database";
 import Entypo from "react-native-vector-icons/Entypo";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { COLOURS } from "../constants";
 
 const Home = ({ navigation }) => {
   const [products, setProducts] = useState([]);
   const [accessory, setAccessory] = useState([]);
   const [user, setUser] = useState();
+  const [token , setToken] = useState("");
 
   //get called on screen loads
   useEffect(() => {
-    const unsubscribe = navigation.addListener("focus", () => {
-      getDataFromDB();
-    });
-
-    // const auth = getAuth();
-    // const user = auth.currentUser;
-    setUser(user);
-
-    return unsubscribe;
+    async function fetchData() {
+      const userToken = await AsyncStorage.getItem('userToken');
+      setToken(userToken);
+    }
+  
+    const unsubscribe = navigation.addListener("focus", fetchData);
+    fetchData();
+  
+    return () => {
+      unsubscribe();
+    };
   }, [navigation]);
+  
 
   //get data from DB
-
   const getDataFromDB = () => {
     let productList = [];
     let accessoryList = [];
@@ -72,6 +74,7 @@ const Home = ({ navigation }) => {
             <Entypo
               name="shopping-bag"
               style={{
+                opacity: 0,
                 fontSize: 18,
                 color: COLOURS.backgroundMedium,
                 padding: 12,
@@ -120,7 +123,7 @@ const Home = ({ navigation }) => {
               lineHeight: 24,
             }}
           >
-            Hardware shop on battuwatta
+            Hardware shop on {token}
           </Text>
         </View>
         <View

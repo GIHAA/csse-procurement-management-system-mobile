@@ -1,8 +1,8 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { auth } from '../../firebase.config'
-import { getAuth, createUserWithEmailAndPassword , signInWithEmailAndPassword } from "firebase/auth"
+// import { auth } from '../../firebase.config'
+// import { getAuth, createUserWithEmailAndPassword , signInWithEmailAndPassword } from "firebase/auth"
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -22,45 +22,46 @@ const Login = () => {
   }, [])
 
   const handleSignUp = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        const uid = user.uid; // Get the user's unique ID
+    // createUserWithEmailAndPassword(auth, email, password)
+    //   .then((userCredential) => {
+    //     const user = userCredential.user;
+    //     const uid = user.uid; // Get the user's unique ID
 
-        // Save additional user data (e.g., address and phone) to Firestore
-        // db.collection("users")
-        //   .doc(uid) // Use the user's UID as the document ID
-        //   .set({
-        //     email: email,
-        //     address: userAddress, // Replace with the user's address state
-        //     phone: userPhone, // Replace with the user's phone state
-        //   })
-        //   .then(() => {
-        //     console.log("User data saved to Firestore!");
-        //     // ... Continue with any other actions
-        //   })
-        //   .catch((error) => {
-        //     console.error("Error adding user data to Firestore: ", error);
-        //   });
-      })
-      .catch((error) => {
-        console.log(error.message);
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+    //     // Save additional user data (e.g., address and phone) to Firestore
+    //     // db.collection("users")
+    //     //   .doc(uid) // Use the user's UID as the document ID
+    //     //   .set({
+    //     //     email: email,
+    //     //     address: userAddress, // Replace with the user's address state
+    //     //     phone: userPhone, // Replace with the user's phone state
+    //     //   })
+    //     //   .then(() => {
+    //     //     console.log("User data saved to Firestore!");
+    //     //     // ... Continue with any other actions
+    //     //   })
+    //     //   .catch((error) => {
+    //     //     console.error("Error adding user data to Firestore: ", error);
+    //     //   });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error.message);
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //   });
   }
 
   const handleLogin = () => {
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+    // signInWithEmailAndPassword(auth, email, password)
+    // .then((userCredential) => {
+    //   // Signed in 
+    //   const user = userCredential.user;
+    //   // ...
+    // })
+    // .catch((error) => {
+    //   const errorCode = error.code;
+    //   const errorMessage = error.message;
+    // });
+    
   }
 
   return (

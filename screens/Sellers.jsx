@@ -11,7 +11,6 @@ import { Items } from "../assets/database/Database";
 import Entypo from "react-native-vector-icons/Entypo";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import { getAuth } from "firebase/auth";
 import { COLOURS, SIZES } from "../constants";
 import { Feather } from "@expo/vector-icons";
 
@@ -26,16 +25,17 @@ const Sellers = ({ navigation }) => {
       getDataFromDB();
     });
 
-    const auth = getAuth();
-    const user = auth.currentUser;
-    setUser(user);
+    // const auth = getAuth();
+    // const user = auth.currentUser;
+    // setUser(user);
 
-    return unsubscribe;
+    // return unsubscribe;
   }, [navigation]);
 
   //get data from DB
 
   const getDataFromDB = () => {
+ 
     let productList = [];
     let accessoryList = [];
     for (let index = 0; index < Items.length; index++) {
@@ -70,18 +70,7 @@ const Sellers = ({ navigation }) => {
             padding: 16,
           }}
         >
-          <TouchableOpacity>
-            <Entypo
-              name="shopping-bag"
-              style={{
-                fontSize: 18,
-                color: COLOURS.backgroundMedium,
-                padding: 12,
-                borderRadius: 10,
-                backgroundColor: COLOURS.backgroundLight,
-              }}
-            />
-          </TouchableOpacity>
+
         </View>
         <View
           style={{

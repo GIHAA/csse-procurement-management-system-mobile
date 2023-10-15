@@ -9,6 +9,9 @@ import Home from "./screens/Home";
 import MyCart from './screens/MyCart';
 import ProductInfo from './screens/ProductInfo';
 import Store from "./screens/Store";
+import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
+import StartScreen from "./screens/StartScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -34,14 +37,16 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      {/* <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
-   */}
+      <Stack.Screen name="Start" component={StartScreen} options={{ headerShown: false }}/>
+  
         <Stack.Screen
           name="Bottom Navigation"
           component={BottomTabNavigation}
           options={{ headerShown: false }}
         />
-         <Stack.Screen name="Home" component={React.memo(Home)} options={{ headerShown: false }} />
+         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+         <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerShown: false }} />
+         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerShown: false }} />
          <Stack.Screen name="Store" component={Store} options={{ headerShown: false }}/>
         <Stack.Screen name="MyCart" component={MyCart} options={{ headerShown: false }}/>
         <Stack.Screen name="ProductInfo" component={ProductInfo} options={{ headerShown: false }}/>

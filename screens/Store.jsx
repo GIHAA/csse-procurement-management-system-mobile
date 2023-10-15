@@ -7,29 +7,27 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import {  Items } from "../assets/database/Database";
+import { Items } from "../assets/database/Database";
 import Entypo from "react-native-vector-icons/Entypo";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import { getAuth } from "firebase/auth";
+import { COLOURS } from "../constants";
+import { useNavigation } from "@react-navigation/native";
 
-const Store = ({ route, navigation  }) => {
+const Store = ({ route }) => {
   const [products, setProducts] = useState([]);
   const [accessory, setAccessory] = useState([]);
   const [user, setUser] = useState();
 
   const { name } = route.params;
 
+  const navigation = useNavigation();
+
   //get called on screen loads
   useEffect(() => {
     const unsubscribe = navigation.addListener("focus", () => {
       getDataFromDB();
     });
-
-    const auth = getAuth();
-    const user = auth.currentUser;
-    setUser(user);
-
     return unsubscribe;
   }, [navigation]);
 
@@ -50,13 +48,11 @@ const Store = ({ route, navigation  }) => {
     setAccessory(accessoryList);
   };
 
-  //create an product reusable card
-
   const ProductCard = ({ data }) => {
     return (
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate("ProductInfo", { productID: data.id , name: name})
+          navigation.navigate("ProductInfo", { productID: data.id, name: name })
         }
         style={{
           width: "48%",
@@ -172,7 +168,7 @@ const Store = ({ route, navigation  }) => {
             </View>
           )
         ) : null}
-        <Text>Rs :  {data.productPrice}</Text>
+        <Text>Rs : {data.productPrice}</Text>
       </TouchableOpacity>
     );
   };
@@ -195,15 +191,15 @@ const Store = ({ route, navigation  }) => {
             padding: 16,
           }}
         >
-          <TouchableOpacity>
-            <Entypo
-              name="shopping-bag"
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <MaterialCommunityIcons
+              name="chevron-left"
               style={{
                 fontSize: 18,
-                color: COLOURS.backgroundMedium,
+                color: COLOURS.backgroundDark,
                 padding: 12,
-                borderRadius: 10,
                 backgroundColor: COLOURS.backgroundLight,
+                borderRadius: 12,
               }}
             />
           </TouchableOpacity>
