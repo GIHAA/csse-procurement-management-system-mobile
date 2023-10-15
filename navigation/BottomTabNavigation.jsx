@@ -3,11 +3,10 @@ import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons, AntDesign, Feather } from "@expo/vector-icons";
 import { COLOURS } from "../constants/index";
-import { Entypo } from '@expo/vector-icons';
-import Home from "../screens/Home"
+import { Entypo } from "@expo/vector-icons";
+import Home from "../screens/Home";
 import Store from "../screens/Store";
 import Sellers from "../screens/Sellers";
-
 
 const Tab = createBottomTabNavigator();
 
@@ -49,8 +48,8 @@ const BottomTabNavigation = () => {
         options={{
           tabBarIcon: ({ focused }) => {
             return (
-              <Ionicons
-                name={"search-sharp"}
+              <Entypo
+                name="shopping-cart"
                 size={24}
                 color={focused ? COLOURS.primary : COLOURS.gray2}
               />
@@ -59,14 +58,12 @@ const BottomTabNavigation = () => {
         }}
       />
 
-
       <Tab.Screen
         name="fav"
         component={Home}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
-
               <Feather
                 name={"heart"}
                 size={24}
@@ -92,8 +89,6 @@ const BottomTabNavigation = () => {
           },
         }}
       />
-
-      
     </Tab.Navigator>
   );
 };

@@ -5,7 +5,7 @@ import { DefaultTheme } from 'react-native-paper'
 const { height, width } = Dimensions.get('window');
 
 const COLOURS = {
-  primary: "#198155",
+  primary: "#453B70",
   secondary: "#DDF0FF",
   tertiary: "#FF7754",
 

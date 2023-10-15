@@ -8,7 +8,7 @@ const getOrder = async (payload) =>{
 }
 
 const addOrder = async (payload) =>{
-    const response = await axios.post(`http://144.126.219.21:8001/api/v1/auth/signin`, payload);
+    const response = await axios.post(`${BE_URL}/auth/signin`, payload);
     return response;
 }
 

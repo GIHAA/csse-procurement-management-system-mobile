@@ -37,8 +37,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen name="Start" component={StartScreen} options={{ headerShown: false }}/>
-  
+      {/* <Stack.Screen name="Start" component={StartScreen} options={{ headerShown: false }}/>
+   */}
+      {/* <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
+   */}
         <Stack.Screen
           name="Bottom Navigation"
           component={BottomTabNavigation}

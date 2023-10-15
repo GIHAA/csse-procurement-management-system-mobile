@@ -1,6 +1,7 @@
 import React from 'react'
 import { ImageBackground, StyleSheet, KeyboardAvoidingView } from 'react-native'
-import { theme } from '../constants/index'
+import { THEME } from '../constants'
+
 
 export default function Background({ children }) {
   return (
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     width: '100%',
-    backgroundColor: theme.colors.surface,
+    backgroundColor: THEME.colors.surface,
   },
   container: {
     flex: 1,
