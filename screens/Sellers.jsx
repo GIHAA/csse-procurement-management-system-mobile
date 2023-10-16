@@ -5,38 +5,19 @@ import {
   StatusBar,
   ScrollView,
   TouchableOpacity,
-  TextInput
+  TextInput,
 } from "react-native";
-import { Items } from "../assets/database/Database";
 import { COLOURS, SIZES } from "../constants";
 import { Feather } from "@expo/vector-icons";
 import styles from "../styles/Seller.style";
+import { SellersDetails } from "../assets/database/Database";
 
 const Sellers = ({ navigation }) => {
-  const [products, setProducts] = useState([]);
-  const [accessory, setAccessory] = useState([]);
-  const [user, setUser] = useState();
+  const [sellers, setSellers] = useState([]);
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener("focus", () => {
-      getDataFromDB();
-    });
-  }, [navigation]);
-
-  const getDataFromDB = () => {
-    let productList = [];
-    let accessoryList = [];
-    for (let index = 0; index < Items.length; index++) {
-      if (Items[index].category == "product") {
-        productList.push(Items[index]);
-      } else if (Items[index].category == "accessory") {
-        accessoryList.push(Items[index]);
-      }
-    }
-
-    setProducts(productList);
-    setAccessory(accessoryList);
-  };
+    setSellers(SellersDetails);
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -61,7 +42,6 @@ const Sellers = ({ navigation }) => {
           </View>
         </View>
         <View style={{ padding: 16 }}>
-          <View style={{ flexDirection: "row", alignItems: "center" }}></View>
           <ScrollView style={{ flex: 1 }}>
             <View
               style={{
@@ -70,37 +50,27 @@ const Sellers = ({ navigation }) => {
                 justifyContent: "space-around",
               }}
             >
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("Store", { name: "Gihan" });
-                }}
-                style={styles.sellerCard}
-              >
-                <View style={styles.sellerInfo}>
-                  <View style={styles.sellerText}>
-                    <Text style={styles.sellerName}>Namal Solutions</Text>
-                    <Text style={styles.sellerCategory}>
-                      Category: Tools and Equipment
-                    </Text>
-                    <Text style={styles.sellerAddress}>
-                      Address: 668/5 narangodapaluwa battuwatta
-                    </Text>
+              {sellers.map((seller) => (
+                <TouchableOpacity
+                  key={seller.id}
+                  onPress={() => {
+                    navigation.navigate("Store", { seller });
+                  }}
+                  style={styles.sellerCard}
+                >
+                  <View style={styles.sellerInfo}>
+                    <View style={styles.sellerText}>
+                      <Text style={styles.sellerName}>{seller.name}</Text>
+                      <Text style={styles.sellerCategory}>
+                        Category: {seller.category}
+                      </Text>
+                      <Text style={styles.sellerAddress}>
+                        Address: {seller.address}
+                      </Text>
+                    </View>
                   </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.sellerCard}>
-                <View style={styles.sellerInfo}>
-                  <View style={styles.sellerText}>
-                    <Text style={styles.sellerName}>Namal Solutions</Text>
-                    <Text style={styles.sellerCategory}>
-                      Category: Tools and Equipment
-                    </Text>
-                    <Text style={styles.sellerAddress}>
-                      Address: 668/5 narangodapaluwa battuwatta
-                    </Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
+                </TouchableOpacity>
+              ))}
             </View>
           </ScrollView>
         </View>

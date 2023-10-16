@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ProductCard = ({ data }) => {
+const ProductCard = ({ data , navigation , name}) => {
   return (
     <TouchableOpacity
       onPress={() =>

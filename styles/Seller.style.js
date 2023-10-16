@@ -1,35 +1,15 @@
 import { StyleSheet } from "react-native";
 import { COLOURS ,SIZES } from "../constants";
 
-const styles =  StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     width: "100%",
     height: "100%",
     backgroundColor: COLOURS.white,
   },
   header: {
-    width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 16,
-  },
-  backButton: {
-    fontSize: 18,
-    color: COLOURS.backgroundDark,
-    padding: 12,
-    backgroundColor: COLOURS.backgroundLight,
-    borderRadius: 12,
-  },
-  cartButton: {
-    fontSize: 18,
-    color: COLOURS.backgroundMedium,
-    padding: 12,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: COLOURS.backgroundLight,
-  },
-  titleContainer: {
-    marginBottom: 10,
     padding: 16,
   },
   title: {
@@ -39,38 +19,59 @@ const styles =  StyleSheet.create({
     letterSpacing: 1,
     marginBottom: 10,
   },
-  description: {
-    fontSize: 14,
-    color: COLOURS.black,
-    fontWeight: "400",
-    letterSpacing: 1,
-    lineHeight: 24,
+  searchContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignContent: "center",
+    marginHorizontal: SIZES.small,
+    backgroundColor: COLOURS.secondary,
+    borderRadius: SIZES.medium,
+    marginVertical: SIZES.medium,
+    height: 50,
   },
-  productsContainer: {
-    padding: 16,
+  searchInput: {
+    flex: 1,
+    backgroundColor: COLOURS.secondary,
+    marginRight: SIZES.small,
+    borderRadius: SIZES.small,
   },
-  productsHeader: {
+  searchButton: {
+    width: 50,
+    height: "100%",
+    borderRadius: SIZES.medium,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: COLOURS.primary,
+  },
+  sellerCard: {
+    height: 110,
+    marginTop: 20,
+    backgroundColor: COLOURS.secondary,
+    marginHorizontal: 13,
+    borderRadius: 10,
+    justifyContent: "space-between",
+    padding: 10,
+    borderWidth: 1,
+    borderColor: COLOURS.primary,
+    width: "100%",
+  },
+  sellerInfo: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
-  productsTitle: {
+  sellerText: {
+    flexDirection: "column",
+  },
+  sellerName: {
     fontSize: 18,
-    color: COLOURS.black,
-    fontWeight: "500",
-    letterSpacing: 1,
+    fontWeight: "bold",
   },
-  productsCount: {
-    fontSize: 14,
-    color: COLOURS.black,
-    fontWeight: "400",
-    opacity: 0.5,
-    marginLeft: 10,
+  sellerCategory: {
+    fontSize: 15,
   },
-  seeAll: {
-    fontSize: 14,
-    color: COLOURS.blue,
-    fontWeight: "400",
+  sellerAddress: {
+    fontSize: 15,
   },
 });
 

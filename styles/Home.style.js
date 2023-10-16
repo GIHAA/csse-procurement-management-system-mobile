@@ -60,6 +60,33 @@ const styles = StyleSheet.create({
   recentActivityContent: {
     flex: 1,
   },
+  recentActivity: {
+    marginVertical: 16,
+  },
+  recentActivityTitle: {
+    fontSize: 20,
+    marginLeft: 12,
+    fontWeight: "bold",
+  },
+  recentActivityContent: {
+    marginVertical: 8,
+  },
+  activityCard: {
+    backgroundColor: COLOURS.secondary,
+    marginVertical: 10,
+    marginHorizontal: 13,
+    padding: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: COLOURS.primary,
+  },
+  activityTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  activityText: {
+    fontSize: 15,
+  },
 });
 
-export default styles
+export default styles;

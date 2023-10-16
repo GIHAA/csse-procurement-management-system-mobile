@@ -97,3 +97,44 @@ export const Items = [
     productImageList: [      "https://firebasestorage.googleapis.com/v0/b/scrapie-85d87.appspot.com/o/temp%2Fistockphoto-476199756-1024x1024-transformed.webp?alt=media&token=43468e0d-d114-453b-9622-55260ba7ef68", "", ""],
   },
 ];
+
+
+export const RecentActivities = [
+  {
+    id: 1,
+    title: "Order Placed",
+    fieldOfficer: "Gihan Sudeepa",
+    seller: "Namal Solutions",
+    totalPrice: "30000 lkr",
+  },
+  {
+    id: 2,
+    title: "Order Placed",
+    fieldOfficer: "Gihan Sudeepa",
+    seller: "Namal Solutions",
+    totalPrice: "30000 lkr",
+  },
+  {
+    id: 3,
+    title: "Order Placed",
+    fieldOfficer: "Gihan Sudeepa",
+    seller: "Namal Solutions",
+    totalPrice: "30000 lkr",
+  },
+];
+
+
+export const SellersDetails = [
+  {
+    id: 1,
+    name: "Namal Solutions",
+    category: "Tools and Equipment",
+    address: "668/5 Narangodapaluwa Battuwatta",
+  },
+  {
+    id: 2,
+    name: "ToolMaster",
+    category: "Hardware",
+    address: "123 Main Street",
+  },
+];

@@ -71,7 +71,6 @@ const MyCart = ({ navigation }) => {
   };
 
   //remove data from Cart
-
   const removeItemFromCart = async (id) => {
     let itemArray = await AsyncStorage.getItem("cartItems");
     itemArray = JSON.parse(itemArray);
@@ -89,23 +88,19 @@ const MyCart = ({ navigation }) => {
   };
 
   //checkout
-
   const checkOut = async () => {
     try {
-      //const data = await AsyncStorage.getItem('cartItems')
+      const data = await AsyncStorage.getItem('cartItems')
       Alert.alert(JSON.stringify(product));
-
-      orderService.addOrder()
-
-      console.log(product);
-      //await AsyncStorage.removeItem('cartItems');
+      orderService.addOrder();
+      await AsyncStorage.removeItem('cartItems');
     } catch (error) {
       return error;
     }
 
     ToastAndroid.show("Items will be Deliverd SOON!", ToastAndroid.SHORT);
 
-    //navigation.navigate("Home");
+    navigation.navigate("Home");
   };
 
   const updateQuantity = (itemId, newQuantity) => {
