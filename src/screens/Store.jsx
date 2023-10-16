@@ -19,7 +19,7 @@ const Store = ({ route }) => {
   const [accessory, setAccessory] = useState([]);
   const [user, setUser] = useState();
 
-  const { name } = route.params;
+  const { seller } = route.params;
 
   const navigation = useNavigation();
 
@@ -60,7 +60,7 @@ const Store = ({ route }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>{name} Hardware Solutions</Text>
+          <Text style={styles.title}>{seller.name} Shop</Text>
           <Text style={styles.description}>
             Hardware shop on battuwatta
             {"\n"}24/7 services
@@ -76,7 +76,7 @@ const Store = ({ route }) => {
           </View>
           <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-around" }}>
             {products.map((data) => {
-              return <ProductCard data={data} key={data.id} />;
+              return <ProductCard name={seller.name} navigation={navigation} data={data} key={data.id} />;
             })}
           </View>
         </View>
