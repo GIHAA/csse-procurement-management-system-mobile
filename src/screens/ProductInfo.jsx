@@ -11,9 +11,8 @@ import {
   Animated,
   ToastAndroid,
 } from "react-native";
-import { COLOURS, Items } from "../assets/database/Database";
+import { COLOURS, Items } from "../assets/data/data";
 import Entypo from "react-native-vector-icons/Entypo";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import styles from "../styles/ProductInfo.style";
 

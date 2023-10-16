@@ -5,14 +5,13 @@ import {
   StatusBar,
   ScrollView,
   TouchableOpacity,
-  StyleSheet
 } from "react-native";
 import Entypo from "react-native-vector-icons/Entypo";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { COLOURS } from "../constants";
 import styles from "../styles/Home.style";
-import { RecentActivities } from "../assets/database/Database";
+import { RecentActivities } from "../assets/data/data";
 
 const Home = ({ navigation }) => {
   const [token, setToken] = useState("");

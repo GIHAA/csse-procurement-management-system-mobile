@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { COLOURS } from "../assets/database/Database";
 import styles from "../styles/CartItem.style";
 
 const MyCartItems = (props) => {

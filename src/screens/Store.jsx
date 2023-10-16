@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import { Items } from "../assets/database/Database";
+import { Items } from "../assets/data/data";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { COLOURS } from "../constants";
 import { useNavigation } from "@react-navigation/native";
@@ -23,7 +23,6 @@ const Store = ({ route }) => {
 
   const navigation = useNavigation();
 
-  // get called on screen loads
   useEffect(() => {
     const unsubscribe = navigation.addListener("focus", () => {
       getDataFromDB();
@@ -31,7 +30,6 @@ const Store = ({ route }) => {
     return unsubscribe;
   }, [navigation]);
 
-  // get data from DB
   const getDataFromDB = () => {
     let productList = [];
     let accessoryList = [];

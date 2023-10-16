@@ -6,7 +6,7 @@ import { THEME } from '../constants'
 export default function Background({ children }) {
   return (
     <ImageBackground
-      source={require('../assets/background_dot.png')}
+      source={require('../assets/images/background_dot.png')}
       resizeMode="repeat"
       style={styles.background}
     >

@@ -10,7 +10,7 @@ import {
 import { COLOURS, SIZES } from "../constants";
 import { Feather } from "@expo/vector-icons";
 import styles from "../styles/Seller.style";
-import { SellersDetails } from "../assets/database/Database";
+import { SellersDetails } from "../assets/data/data";
 
 const Sellers = ({ navigation }) => {
   const [sellers, setSellers] = useState([]);

@@ -9,7 +9,7 @@ import {
   StyleSheet
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { COLOURS, Items } from "../assets/database/Database";
+import { COLOURS, Items } from "../assets/data/data";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import MyCartItems from "./MyCartItems";
 import CreditCardInfo from "../components/CreditCardInfo";
