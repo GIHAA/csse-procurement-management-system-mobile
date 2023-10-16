@@ -17,8 +17,9 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import styles from "../styles/ProductInfo.style";
 
-const ProductInfo = ({ route, navigation }) => {
-  const { productID, name } = route.params;
+const ProductInfo = ({ route, navigation  }) => {
+
+  const { productID, seller } = route.params;
   const [product, setProduct] = useState({});
   const width = Dimensions.get('window').width;
   const scrollX = new Animated.Value(0);
@@ -40,7 +41,8 @@ const ProductInfo = ({ route, navigation }) => {
     }
   };
 
-  const addToCart = async (id, name) => {
+  const addToCart = async (id, seller) => {
+   
     let itemArray = await AsyncStorage.getItem("cartItems");
     itemArray = JSON.parse(itemArray);
     if (itemArray) {
@@ -52,7 +54,7 @@ const ProductInfo = ({ route, navigation }) => {
           "Item Added Successfully to cart",
           ToastAndroid.SHORT
         );
-        navigation.navigate("Store", { name });
+        navigation.navigate("Store", {seller});
       } catch (error) {
         return error;
       }
@@ -65,7 +67,7 @@ const ProductInfo = ({ route, navigation }) => {
           "Item Added Successfully to cart",
           ToastAndroid.SHORT
         );
-        navigation.navigate("Store", { name });
+        navigation.navigate("Store", {seller});
       } catch (error) {
         return error;
       }
@@ -152,7 +154,7 @@ const ProductInfo = ({ route, navigation }) => {
       <View style={styles.addToCartButtonContainer}>
         <TouchableOpacity
           onPress={() =>
-            product.isAvailable ? addToCart(product.id, name) : null
+            product.isAvailable ? addToCart(product.id, seller) : null
           }
           style={
             product.isAvailable

@@ -66,11 +66,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const ProductCard = ({ data , navigation , name}) => {
+const ProductCard = ({ data , navigation , seller}) => {
+
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate("ProductInfo", { productID: data.id, name: name })
+        navigation.navigate("ProductInfo", { productID: data.id, seller})
       }
       style={styles.container}
     >

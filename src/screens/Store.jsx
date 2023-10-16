@@ -76,7 +76,7 @@ const Store = ({ route }) => {
           </View>
           <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-around" }}>
             {products.map((data) => {
-              return <ProductCard name={seller.name} navigation={navigation} data={data} key={data.id} />;
+              return <ProductCard seller={seller} navigation={navigation} data={data} key={data.id} />;
             })}
           </View>
         </View>

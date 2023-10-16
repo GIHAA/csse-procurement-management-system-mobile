@@ -90,17 +90,14 @@ const MyCart = ({ navigation }) => {
   //checkout
   const checkOut = async () => {
     try {
-      const data = await AsyncStorage.getItem('cartItems')
-      Alert.alert(JSON.stringify(product));
-      orderService.addOrder();
+      await orderService.addOrder({ totalAmount: total });
       await AsyncStorage.removeItem('cartItems');
+      ToastAndroid.show("Items will be Delivered SOON!", ToastAndroid.SHORT);
+      navigation.navigate("Bottom Navigation");
     } catch (error) {
-      return error;
+      console.error(error);
+      ToastAndroid.show("An error occurred during checkout.", ToastAndroid.LONG);
     }
-
-    ToastAndroid.show("Items will be Deliverd SOON!", ToastAndroid.SHORT);
-
-    navigation.navigate("Home");
   };
 
   const updateQuantity = (itemId, newQuantity) => {

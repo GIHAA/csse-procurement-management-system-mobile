@@ -14,7 +14,7 @@ export const Items = [
     id: 1,
     category: "product",
     productName: "Rebar",
-    productPrice: 500,
+    productPrice: 50000,
     description: "Steel reinforcement bars for concrete structures",
     isOff: true,
     offPercentage: 10,
