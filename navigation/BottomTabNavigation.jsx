@@ -7,6 +7,7 @@ import { Entypo } from "@expo/vector-icons";
 import Home from "../screens/Home";
 import Store from "../screens/Store";
 import Sellers from "../screens/Sellers";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
@@ -64,8 +65,8 @@ const BottomTabNavigation = () => {
         options={{
           tabBarIcon: ({ focused }) => {
             return (
-              <Feather
-                name={"heart"}
+              <MaterialCommunityIcons
+                name="truck-delivery"
                 size={24}
                 color={focused ? COLOURS.primary : COLOURS.gray2}
               />
