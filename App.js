@@ -11,7 +11,6 @@ import ProductInfo from './screens/ProductInfo';
 import Store from "./screens/Store";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
-import StartScreen from "./screens/StartScreen";
 
 
 const Stack = createNativeStackNavigator();

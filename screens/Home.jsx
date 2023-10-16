@@ -5,12 +5,14 @@ import {
   StatusBar,
   ScrollView,
   TouchableOpacity,
+  StyleSheet
 } from "react-native";
 import { Items } from "../assets/database/Database";
 import Entypo from "react-native-vector-icons/Entypo";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { COLOURS } from "../constants";
+import styles from "../styles/Home.style"
 
 const Home = ({ navigation }) => {
   const [products, setProducts] = useState([]);
@@ -50,159 +52,26 @@ const Home = ({ navigation }) => {
     setAccessory(accessoryList);
   };
 
-  //create an product reusable card
-
   return (
-    <View
-      style={{
-        width: "100%",
-        height: "100%",
-        backgroundColor: COLOURS.white,
-      }}
-    >
+    <View style={styles.container}>
       <StatusBar backgroundColor={COLOURS.white} barStyle="dark-content" />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View
-          style={{
-            width: "100%",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            padding: 16,
-          }}
-        >
+        <View style={styles.header}>
           <TouchableOpacity>
-            <Entypo
-              name="shopping-bag"
-              style={{
-                opacity: 0,
-                fontSize: 18,
-                color: COLOURS.backgroundMedium,
-                padding: 12,
-                borderRadius: 10,
-                backgroundColor: COLOURS.backgroundLight,
-              }}
-            />
+            <Entypo name="shopping-bag" style={styles.headerIcon} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("MyCart")}>
-            <MaterialCommunityIcons
-              name="cart"
-              style={{
-                fontSize: 18,
-                color: COLOURS.backgroundMedium,
-                padding: 12,
-                borderRadius: 10,
-                borderWidth: 1,
-                borderColor: COLOURS.backgroundLight,
-              }}
-            />
+            <MaterialCommunityIcons name="cart" style={styles.headerIcon2} />
           </TouchableOpacity>
         </View>
-        <View
-          style={{
-            marginBottom: 10,
-            padding: 16,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 26,
-              color: COLOURS.black,
-              fontWeight: "500",
-              letterSpacing: 1,
-              marginBottom: 10,
-            }}
-          >
-            Good morning user
-          </Text>
-          <Text
-            style={{
-              fontSize: 14,
-              color: COLOURS.black,
-              fontWeight: "400",
-              letterSpacing: 1,
-              lineHeight: 24,
-            }}
-          >
-            Hardware shop on {token}
-          </Text>
+        <View style={styles.greeting}>
+          <Text style={styles.greetingText}>Good morning user</Text>
+          <Text style={styles.shopInfo}>Hardware shop on {token}</Text>
         </View>
-        <View
-          style={{
-            padding: 16,
-          }}
-        >
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 18,
-                  color: COLOURS.black,
-                  fontWeight: "500",
-                  letterSpacing: 1,
-                }}
-              >
-                Recent activity
-              </Text>
-            </View>
-          </View>
-
-          <ScrollView style={{ flex: 1 }}>
-            <View
-              style={{
-                flexDirection: "row",
-                flexWrap: "wrap",
-                justifyContent: "space-around",
-              }}
-            >
-              <View
-                style={{
-                  height: 110,
-                  marginTop: 20,
-                  backgroundColor: COLOURS.secondary,
-                  marginHorizontal: 13,
-                  borderRadius: 10,
-                  justifyContent: "space-between",
-                  padding: 10,
-                  borderWidth: 1,
-                  borderColor: COLOURS.primary,
-                  width: "100%",
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <View style={{ flexDirection: "column" }}>
-                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                      Order Placed
-                    </Text>
-                    <Text style={{ fontSize: 15 }}>
-                      Field Officer : Gihan Sudeepa
-                    </Text>
-                    <Text style={{ fontSize: 15 }}>
-                      Seller : Namal Solutions
-                    </Text>
-                    <Text style={{ fontSize: 15 }}>
-                      Total Price : 30000 lkr
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
+        <View style={styles.recentActivity}>
+          <Text style={styles.recentActivityTitle}>Recent activity</Text>
+          <ScrollView style={styles.recentActivityContent}>
+            {/* Your recent activity content */}
           </ScrollView>
         </View>
       </ScrollView>

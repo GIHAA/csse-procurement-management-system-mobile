@@ -5,37 +5,25 @@ import {
   StatusBar,
   ScrollView,
   TouchableOpacity,
-  TextInput,
+  TextInput
 } from "react-native";
 import { Items } from "../assets/database/Database";
-import Entypo from "react-native-vector-icons/Entypo";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { COLOURS, SIZES } from "../constants";
 import { Feather } from "@expo/vector-icons";
+import styles from "../styles/Seller.style";
 
 const Sellers = ({ navigation }) => {
   const [products, setProducts] = useState([]);
   const [accessory, setAccessory] = useState([]);
   const [user, setUser] = useState();
 
-  //get called on screen loads
   useEffect(() => {
     const unsubscribe = navigation.addListener("focus", () => {
       getDataFromDB();
     });
-
-    // const auth = getAuth();
-    // const user = auth.currentUser;
-    // setUser(user);
-
-    // return unsubscribe;
   }, [navigation]);
 
-  //get data from DB
-
   const getDataFromDB = () => {
- 
     let productList = [];
     let accessoryList = [];
     for (let index = 0; index < Items.length; index++) {
@@ -50,121 +38,31 @@ const Sellers = ({ navigation }) => {
     setAccessory(accessoryList);
   };
 
-  //create an product reusable card
-
   return (
-    <View
-      style={{
-        width: "100%",
-        height: "100%",
-        backgroundColor: COLOURS.white,
-      }}
-    >
+    <View style={styles.container}>
       <StatusBar backgroundColor={COLOURS.white} barStyle="dark-content" />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View
-          style={{
-            width: "100%",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            padding: 16,
-          }}
-        >
-
+        <View style={styles.header}></View>
+        <View style={{ marginBottom: 10, padding: 16 }}>
+          <Text style={styles.title}>Available Sellers</Text>
         </View>
-        <View
-          style={{
-            marginBottom: 10,
-            padding: 16,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 26,
-              color: COLOURS.black,
-              fontWeight: "500",
-              letterSpacing: 1,
-              marginBottom: 10,
-            }}
-          >
-            Available Sellers
-          </Text>
-        </View>
-
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            alignContent: "center",
-            marginHorizontal: SIZES.small,
-            backgroundColor: COLOURS.secondary,
-            borderRadius: SIZES.medium,
-            marginVertical: SIZES.medium,
-            height: 50,
-          }}
-        >
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: COLOURS.secondary,
-              marginRight: SIZES.small,
-              borderRadius: SIZES.small,
-            }}
-          >
+        <View style={styles.searchContainer}>
+          <View style={styles.searchInput}>
             <TextInput
-              style={{
-                fontFamily: "regular",
-                width: "100%",
-                height: "100%",
-                paddingHorizontal: SIZES.small,
-              }}
+              style={styles.searchInput}
               value=""
               placeholder="Search for sellers"
             />
           </View>
-
-          <View>
-            <TouchableOpacity
-              style={{
-                width: 50,
-                height: "100%",
-                borderRadius: SIZES.medium,
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: COLOURS.primary,
-              }}
-            >
+          <View style={styles.searchButton}>
+            <TouchableOpacity>
               <Feather name="search" size={24} color={COLOURS.offwhite} />
             </TouchableOpacity>
           </View>
         </View>
-
-        <View
-          style={{
-            padding: 16,
-          }}
-        >
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                borderBottomColor: "gray",
-                borderWidth: 1,
-                width: "100%",
-                opacity: 0.3,
-              }}
-            ></View>
-          </View>
-
+        <View style={{ padding: 16 }}>
+          <View style={{ flexDirection: "row", alignItems: "center" }}></View>
           <ScrollView style={{ flex: 1 }}>
-            
             <View
               style={{
                 flexDirection: "row",
@@ -173,79 +71,36 @@ const Sellers = ({ navigation }) => {
               }}
             >
               <TouchableOpacity
-                onPress={()=>{
-                    navigation.navigate("Store" , { name : "Gihan"})
+                onPress={() => {
+                  navigation.navigate("Store", { name: "Gihan" });
                 }}
-                style={{
-                  height: 110,
-                  marginTop: 20,
-                  backgroundColor: COLOURS.secondary,
-                  marginHorizontal: 13,
-                  borderRadius: 10,
-                  justifyContent: "space-between",
-                  padding: 10,
-                  borderWidth: 1,
-                  borderColor: COLOURS.primary,
-                  width: "100%",
-                }}
+                style={styles.sellerCard}
               >
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <View style={{ flexDirection: "column" }}>
-                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                      Namal Solutions
+                <View style={styles.sellerInfo}>
+                  <View style={styles.sellerText}>
+                    <Text style={styles.sellerName}>Namal Solutions</Text>
+                    <Text style={styles.sellerCategory}>
+                      Category: Tools and Equipment
                     </Text>
-                    <Text style={{ fontSize: 15 }}>
-                      Category : Tools and Equipment
-                    </Text>
-                    <Text style={{ fontSize: 15 }}>
-                      Address : 668/5 narangodapaluwa battuwatta
+                    <Text style={styles.sellerAddress}>
+                      Address: 668/5 narangodapaluwa battuwatta
                     </Text>
                   </View>
                 </View>
               </TouchableOpacity>
-
-              <TouchableOpacity
-                style={{
-                  height: 110,
-                  marginTop: 20,
-                  backgroundColor: COLOURS.secondary,
-                  marginHorizontal: 13,
-                  borderRadius: 10,
-                  justifyContent: "space-between",
-                  padding: 10,
-                  borderWidth: 1,
-                  borderColor: COLOURS.primary,
-                  width: "100%",
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <View style={{ flexDirection: "column" }}>
-                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                      Namal Solutions
+              <TouchableOpacity style={styles.sellerCard}>
+                <View style={styles.sellerInfo}>
+                  <View style={styles.sellerText}>
+                    <Text style={styles.sellerName}>Namal Solutions</Text>
+                    <Text style={styles.sellerCategory}>
+                      Category: Tools and Equipment
                     </Text>
-                    <Text style={{ fontSize: 15 }}>
-                      Category : Tools and Equipment
-                    </Text>
-                    <Text style={{ fontSize: 15 }}>
-                      Address : 668/5 narangodapaluwa battuwatta
+                    <Text style={styles.sellerAddress}>
+                      Address: 668/5 narangodapaluwa battuwatta
                     </Text>
                   </View>
                 </View>
               </TouchableOpacity>
-
-
             </View>
           </ScrollView>
         </View>

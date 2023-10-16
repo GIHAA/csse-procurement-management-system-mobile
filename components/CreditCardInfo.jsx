@@ -5,73 +5,65 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 const CreditCardInfo = () => {
   return (
-    <View
-      style={{
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
-      <View
-        style={{
-          flexDirection: "row",
-          width: "80%",
-          alignItems: "center",
-        }}
-      >
-        <View
-          style={{
-            color: COLOURS.blue,
-            backgroundColor: COLOURS.backgroundLight,
-            alignItems: "center",
-            justifyContent: "center",
-            padding: 12,
-            borderRadius: 10,
-            marginRight: 18,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 10,
-              fontWeight: "900",
-              color: COLOURS.blue,
-              letterSpacing: 1,
-            }}
-          >
-            VISA
-          </Text>
+    <View style={styles.container}>
+      <View style={styles.cardInfo}>
+        <View style={styles.cardType}>
+          <Text style={styles.cardTypeText}>VISA</Text>
         </View>
         <View>
-          <Text
-            style={{
-              fontSize: 14,
-              color: COLOURS.black,
-              fontWeight: "500",
-            }}
-          >
-            Visa Classic
-          </Text>
-          <Text
-            style={{
-              fontSize: 12,
-              color: COLOURS.black,
-              fontWeight: "400",
-              lineHeight: 20,
-              opacity: 0.5,
-            }}
-          >
-            ****-9092
-          </Text>
+          <Text style={styles.cardName}>Visa Classic</Text>
+          <Text style={styles.cardNumber}>****-9092</Text>
         </View>
       </View>
       <MaterialCommunityIcons
         name="chevron-right"
-        style={{ fontSize: 22, color: COLOURS.black }}
+        style={styles.chevronIcon}
       />
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  cardInfo: {
+    flexDirection: "row",
+    width: "80%",
+    alignItems: "center",
+  },
+  cardType: {
+    backgroundColor: COLOURS.backgroundLight,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 12,
+    borderRadius: 10,
+    marginRight: 18,
+  },
+  cardTypeText: {
+    fontSize: 10,
+    fontWeight: "900",
+    color: COLOURS.blue,
+    letterSpacing: 1,
+  },
+  cardName: {
+    fontSize: 14,
+    color: COLOURS.black,
+    fontWeight: "500",
+  },
+  cardNumber: {
+    fontSize: 12,
+    color: COLOURS.black,
+    fontWeight: "400",
+    lineHeight: 20,
+    opacity: 0.5,
+  },
+  chevronIcon: {
+    fontSize: 22,
+    color: COLOURS.black,
+  },
+});
 
 export default CreditCardInfo;

@@ -2,31 +2,37 @@
 import axios from "axios";
 import { BE_URL } from "./constants";
 
-const getOrder = async (payload) =>{
-    const response = await axios.post(`http://144.126.219.21:8001/api/v1/auth/signin`, payload);
+const getOrder = async (id) =>{
+    const response = await axios.get(`${BE_URL}/purchase_orders/${id}`);
+    return response;
+}
+
+const getOrders = async () =>{
+    const response = await axios.get(`${BE_URL}/purchase_orders`);
     return response;
 }
 
 const addOrder = async (payload) =>{
-    const response = await axios.post(`${BE_URL}/auth/signin`, payload);
+    const response = await axios.post(`${BE_URL}/purchase_orders`, payload);
     return response;
 }
 
-const editOrder = async () =>{
-    const response = await axios.post(`http://144.126.219.21:8001/api/v1/auth/signup`, payload);
+const editOrder = async (id) =>{
+    const response = await axios.put(`${BE_URL}/purchase_orders/${id}`, payload);
     return response;
 }
 
-const deleteOrder = async () =>{
-    const response = await axios.post(`http://144.126.219.21:8001/api/v1/auth/signup`, payload);
+const deleteOrder = async (id) =>{
+    const response = await axios.delete(`${BE_URL}/purchase_orders/${id}`);
     return response;
 }
 
-const authService = {
+const orderService = {
     getOrder,
+    getOrders,
     addOrder,
     editOrder,
     deleteOrder
 };
-  
-export default authService;
+ 
+export default orderService;

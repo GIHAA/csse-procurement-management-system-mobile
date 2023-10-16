@@ -10,6 +10,7 @@ import {
   Dimensions,
   Animated,
   ToastAndroid,
+  StyleSheet
 } from 'react-native';
 import {COLOURS, Items} from '../assets/database/Database';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -36,7 +37,6 @@ const ProductInfo = ({route, navigation}) => {
   }, [navigation]);
 
   //get product data by productID
-
   const getDataFromDB = async () => {
     for (let index = 0; index < Items.length; index++) {
       if (Items[index].id == productID) {
@@ -47,7 +47,6 @@ const ProductInfo = ({route, navigation}) => {
   };
 
   //add to cart
-
   const addToCart = async (id , name) => {
     let itemArray = await AsyncStorage.getItem('cartItems');
     itemArray = JSON.parse(itemArray);
@@ -365,3 +364,5 @@ const ProductInfo = ({route, navigation}) => {
 };
 
 export default ProductInfo;
+
+const styles = StyleSheet.create({})

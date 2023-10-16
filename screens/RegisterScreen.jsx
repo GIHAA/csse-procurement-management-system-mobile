@@ -11,6 +11,7 @@ import { theme } from '../core/theme'
 import { emailValidator } from '../helpers/emailValidator'
 import { passwordValidator } from '../helpers/passwordValidator'
 import { nameValidator } from '../helpers/nameValidator'
+import styles from '../styles/Register.style'
 
 export default function RegisterScreen({ navigation }) {
   const [name, setName] = useState({ value: '', error: '' })
@@ -83,14 +84,3 @@ export default function RegisterScreen({ navigation }) {
     </Background>
   )
 }
-
-const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    marginTop: 4,
-  },
-  link: {
-    fontWeight: 'bold',
-    color: theme.colors.primary,
-  },
-})
