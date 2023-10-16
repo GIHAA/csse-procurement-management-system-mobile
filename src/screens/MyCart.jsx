@@ -163,7 +163,7 @@ const MyCart = ({ navigation }) => {
       </ScrollView>
   
       <View style={styles.checkoutButtonContainer}>
-        {total > 10000 ? (
+        {total > 100000 ? (
           <TouchableOpacity
             onPress={() => (total !== 0 ? checkOut() : null)}
             style={{
